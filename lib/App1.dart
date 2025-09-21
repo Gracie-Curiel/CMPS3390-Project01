@@ -24,11 +24,7 @@ class FirstView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: ViewButton(), 
-      ),
-    );
+    return const Scaffold(body: Center(child: ViewButton()));
   }
 }
 
@@ -38,7 +34,8 @@ class ViewButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton( // <-- Fixed typo
+    return ElevatedButton(
+      // <-- Fixed typo
       onPressed: () {
         Navigator.push(
           context,
@@ -57,11 +54,10 @@ class SecondView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hello World'),
-      ),
+      appBar: AppBar(title: const Text('Hello World')),
       body: Center(
-        child: ElevatedButton( // <-- Fixed typo
+        child: ElevatedButton(
+          // <-- Fixed typo
           onPressed: () {
             Navigator.pop(context);
           },
