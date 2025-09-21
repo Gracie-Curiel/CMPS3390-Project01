@@ -11,7 +11,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HabitTrackerScreen());
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HabitTrackerScreen(),
+    );
   }
 }
 
@@ -23,7 +26,15 @@ class HabitTrackerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Habit Tracker")),
-      body: const Padding(padding: EdgeInsets.all(16.0), child: HabitTable()),
+      body: const Column(
+        children: const [
+          Expanded(
+            child: Padding(padding: EdgeInsets.all(16.0), child: HabitTable()),
+          ),
+          AddHabit(),
+          ViewButton(),
+        ],
+      ),
     );
   }
 }
@@ -70,6 +81,43 @@ class HabitTable extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+// 4TH CLASS INPUT FILED
+class AddHabit extends StatelessWidget {
+  const AddHabit({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      color: Colors.grey,
+      child: const TextField(
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          hintText: "Enter new habit...",
+        ),
+      ),
+    );
+  }
+}
+
+// 5TH CLASS: BUTTON STYLE
+class ViewButton extends StatelessWidget {
+  const ViewButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MyApp()),
+        );
+      },
+      child: const Text('Add'),
     );
   }
 }
