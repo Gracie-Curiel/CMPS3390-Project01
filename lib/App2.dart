@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  runApp(const MyApp());
+}
 
 // 1ST CLASS: ROOT
 class MyApp extends StatelessWidget {
@@ -31,7 +33,7 @@ class _HabitTrackerScreenState extends State<HabitTrackerScreen> {
 
     final String dateString = DateFormat(
       //"yyyy-MM-dd hh:mm:ss",
-      "EEE MMM dd HH:mm:ss yyyy"
+      "EEE MMM dd HH:mm:ss yyyy",
     ).format(DateTime.now());
 
     setState(() {
@@ -104,7 +106,8 @@ class HabitTable extends StatelessWidget {
             children: [
               Padding(padding: EdgeInsets.all(8), child: Text("No habits yet")),
               Padding(padding: EdgeInsets.all(8), child: Text("???")),
-            ])
+            ],
+          )
         else
           ...List.generate(habits.length, (i) {
             return TableRow(
@@ -142,10 +145,8 @@ class AddHabit extends StatelessWidget {
       color: Colors.grey,
       child: TextField(
         controller: controller,
-        decoration: InputDecoration(
-          border: const OutlineInputBorder(),
-        ),
-        // Note: “When the user presses Enter in this text field, 
+        decoration: InputDecoration(border: const OutlineInputBorder()),
+        // Note: “When the user presses Enter in this text field,
         //       call the onSubmitted function from the parent widget.”
         onSubmitted: (_) => onSubmitted(),
       ),
